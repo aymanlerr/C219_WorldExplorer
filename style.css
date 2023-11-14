@@ -1,0 +1,612 @@
+/* ******************************************************* */
+/* Default Settings */
+/* ******************************************************* */
+
+:root {
+    --beige: #ECE3CE;
+    --light-green: #739072;
+    --green: #4F6F52;
+    --dark-green: #3A4D39;
+    --white: #ffffff;
+    --black: black;
+}
+
+body {
+    background-color: var(--beige);
+    margin: 0;
+    position: relative;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* ******************************************************* */
+/* Navbar */
+/* ******************************************************* */
+
+.navbar {
+    display: flex;
+    background-color: var(--green);
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.logo:hover {
+    animation: float 4s linear infinite;
+}
+
+.nav-links {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.nav-links a {
+    color: var(--beige);
+}
+
+.nav-links a.active {
+    color: black;
+}
+
+.menu {
+    display: flex;
+    gap: 1em;
+}
+
+.menu li:hover {
+    background-color: var(--light-green);
+    border-radius: 8px;
+    transition: 0.3s ease;
+
+}
+
+.menu li {
+    padding: 5px 14px;
+}
+
+.menu a:active {
+    color: var(black);
+}
+
+.packageTour {
+    position: relative;
+}
+
+.dropdown {
+    background-color: var(--dark-green);
+    padding: 0.5em;
+    position: absolute;
+    border-radius: 8px;
+    top: 30px;
+    display: none;
+}
+
+.dropdown li+li {
+    margin-top: 10px;
+}
+
+.dropdown li {
+    padding: 0.5em 1em;
+}
+
+.dropdown li:hover {
+    background-color: var(--light-green);
+}
+
+.packageTour:hover .dropdown {
+    display: block;
+}
+
+.nav-links [type=checkbox] {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    user-select: none;
+    transition: 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        display: none;
+        position: absolute;
+        background-color: var(--green);
+        top: 60px;
+        right: 0;
+        left: 0;
+        text-align: center;
+        padding: 16px 0;
+        transition: 0.5s;
+    }
+
+    .menu li:hover {
+        display: inline-block;
+        background-color: var(--light-green);
+        transition: 0.3s ease;
+    }
+
+    .menu li+li {
+        margin-top: 12px;
+    }
+
+    input[type=checkbox]:checked~.menu {
+        display: block;
+        transition: 0.5s;
+    }
+
+    .hamburger {
+        display: block;
+        transition: 0.5s;
+    }
+
+    .dropdown {
+        left: 72%;
+        top: 0;
+        transform: translateX(35%);
+    }
+
+    .dropdown li:hover {
+        background-color: var(--light-green);
+        background-color: r;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* ******************************************************* */
+/* Index Background Video / Overlay Text / Background Image */
+/* ******************************************************* */
+
+.bgvid-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+}
+
+.bgvid-wrap video {
+    opacity: 0.8;
+}
+
+.bgimg {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.text-overlay {
+    position: absolute;
+    font-size: 30px;
+    width: 100%;
+    color: var(--white);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .bgvid-wrap video {
+        display: none;
+    }
+}
+
+/* ******************************************************* */
+/* Index Image Cards Section */
+/* ******************************************************* */
+
+.header {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    color: var(--dark-green);
+}
+
+.feature-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.feature-section {
+    width: 60%;
+    display: grid;
+    margin: 20px 20px 20px 20px;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: center;
+    justify-items: center;
+}
+
+.feature-item {
+    align-self: start;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.feature-img {
+    transition: 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.feature-desc {
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.feature-item:hover {
+    background-color: black;
+
+    .feature-img {
+        transition: 0.5s ease-in-out;
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+
+    .feature-desc {
+        transition: 0.5s ease-in-out;
+        opacity: 1;
+    }
+}
+
+/* ******************************************************* */
+/* Footer */
+/* ******************************************************* */
+
+.footer {
+    background-color: var(--dark-green);
+    min-height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-headers {
+    color: white;
+}
+
+.footer-list {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style-type: none;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: aliceblue;
+    transition: 0.5s;
+}
+
+.footer-item {
+    padding: 10px;
+    transition: 0.5s;
+    border: 2px solid var(--beige);
+    border-radius: 8px;
+}
+
+.footer-item:hover {
+    background-color: var(--beige);
+    transition: 0.5s;
+    border-radius: 4px;
+
+    .footer-link {
+        color: var(--dark-green);
+        transition: 0.5s;
+    }
+
+
+}
+
+.quickLink {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+}
+
+.copyright {
+    text-align: center;
+    color: white;
+}
+
+/* ******************************************************* */
+/* BANNER */
+/* ******************************************************* */
+.banner {
+    width: 100%;
+    position: relative;
+}
+
+.banner-img-container {
+    width: 100%;
+    height: 200px;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+    object-position: 100% 70%;
+}
+
+.banner-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    font-size: 30px;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--white);
+}
+
+.banner-text h1 {
+    padding-top: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .banner-text h1 {
+        font-size: 40px;
+    }
+}
+
+/* ******************************************************* */
+/* Rediscover Singapore Image Cards */
+/* ******************************************************* */
+
+.card-container {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    min-height: 70vh;
+    height: 100%;
+}
+
+.card {
+    width: 400px;
+    height: 650px;
+    background-color: var(--dark-green);
+    border-radius: 8px;
+    position: relative;
+}
+
+.card img {
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+    height: 500px;
+}
+
+.card h4 {
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    color: var(--beige);
+}
+
+@media screen and (max-width: 768px) {
+
+    .card img {
+        height: 250px;
+    }
+
+    .card {
+        width: 200px;
+        height: 300px;
+    }
+
+    .card h4 {
+        font-size: 18px;
+        margin: 0;
+    }
+}
+
+/* ******************************************************* */
+/* Contact Us Form */
+/* ******************************************************* */
+
+.contact-container {
+    width: 100%;
+    height: 73vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.med-text {
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+    color: var(--dark-green);
+}
+
+.contact-container {
+    font-size: 20px;
+    color: black;
+    min-height: 60vh;
+    height: 100%;
+}
+
+.contact-form {
+    padding: 20px;
+}
+
+.email-form {
+    background-color: var(--dark-green);
+    height: 300px;
+    width: 500px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.email-form b {
+    color: var(--beige);
+}
+
+.input-box {
+    background-color: var(--beige);
+    height: 25px;
+    width: 200px;
+    border-radius: 4px;
+}
+
+.input-box-big {
+    background-color: var(--beige);
+    height: 80px;
+    width: 280px;
+    border-radius: 4px;
+}
+
+.center-form {
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field {
+    color: var(--beige);
+}
+
+.submit-btn {
+    background-color: var(--light-green);
+    width: 100px;
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.submit-btn:hover {
+    background-color: var(--beige);
+    color: var(--dark-green);
+    transition: 0.5s;
+}
+
+.contact-divider {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    width: 100%;
+}
+
+.contact-divider b {
+    color: var(--dark-green);
+}
+
+.contact-gap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-box {
+    background-color: var(--dark-green);
+    border-radius: 8px;
+    padding: 20px;
+    color: var(--beige);
+    transition: 0.5s;
+}
+
+.contact-box:hover {
+    background-color: var(--light-green);
+    transition: 0.5s;
+    color: black;
+}
+
+@media screen and (max-width: 970px) {
+    .med-text {
+        font-size: 20px;
+    }
+
+    .contact-form {
+        font-size: 18px;
+    }
+
+    .contact-divider {
+        flex-direction: column;
+    }
+
+    .email-form {
+        height: 300px;
+        width: 400px;
+    }
+}
+
+/* ******************************************************* */
+/* Lofi Wireframe */
+/* ******************************************************* */
+
+.lofi-container {
+    width: 100%;
+    height: 72vh;
+    height: 100%;
+    text-align: center;
+}
